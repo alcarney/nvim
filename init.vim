@@ -7,6 +7,7 @@
 call plug#begin('~/AppData/Local/nvim/plugged')
 
 Plug 'arcticicestudio/nord-vim'
+Plug 'machakann/vim-sandwich'
 
 call plug#end()
 
@@ -97,6 +98,10 @@ nnoremap <c-h>     <c-w><c-h>
 " -- Tab Management
 " <leader>t: List tabs
 nnoremap <leader>t  :tabs<cr>
+
+" -- Terminal
+" <esc>: Escape behaves as expected in terminal windows
+tnoremap <esc> <c-\><c-n>
 
 " -- Commands
 " <c-n>: Forward in command history
