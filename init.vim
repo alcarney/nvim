@@ -2,6 +2,15 @@
 "
 " Settings that apply everywhere
 
+" ---------------------------------- Plugins ---------------------------------
+"
+call plug#begin('~/AppData/Local/nvim/plugged')
+
+Plug 'arcticicestudio/nord-vim'
+
+call plug#end()
+
+
 " ---------------------------------- Tabs and Spaces -------------------------
 "
 " expandtab:   Insert spaces when we use the <tab> key
@@ -126,12 +135,3 @@ augroup general
     autocmd!
     autocmd BufWritePre * %s/\s\+$//e
 augroup END
-
-
-" ---------------------------------- Plugins ---------------------------------
-"
-call plug#begin('')
-
-Plug 'arcticicestudio/nord-vim'
-
-call plug#end()
