@@ -11,6 +11,10 @@ Plug 'machakann/vim-sandwich'
 
 Plug 'w0rp/ale'
 let g:ale_sign_column_always = 1
+
+Plug 'ambv/black', {'for': 'python'}
+let g:black_virtualenv = '/home/alex/.virtualenvs/black'
+
 call plug#end()
 
 
@@ -142,3 +146,13 @@ augroup general
     autocmd!
     autocmd BufWritePre * %s/\s\+$//e
 augroup END
+
+" ----------------------------------- Python ---------------------------------
+"
+"  Settings to enable plugins that make use of python.
+"
+" g:python_host_prog:  Which interpreter to use for Python 2.x
+" g:python3_host_prog: Which interpreter to use for Python 3.x
+let g:python_host_prog = '/home/alex/.virtualenvs/nvim-py2/bin/python'
+let g:python3_host_prog = '/home/alex/.virtualenvs/nvim_py3/bin/python3'
+
