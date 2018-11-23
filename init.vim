@@ -6,14 +6,33 @@
 "
 call plug#begin('~/.local/share/nvim/plugged')
 
+" Colors
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_uniform_status_lines = 1
 Plug 'arcticicestudio/nord-vim'
+
+" Generic Editing
 Plug 'machakann/vim-sandwich'
 
+" Git
+let g:gitgutter_map_keys = 0
+let g:gitgutter_sign_added = '→'
+let g:gitgutter_sign_modified = '↔'
+let g:gitgutter_sign_removed = '←'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'tpope/vim-fugitive'
+
+" Linting
 Plug 'w0rp/ale'
+let g:ale_sign_error = '!'
+let g:ale_sign_warning = '•'
 let g:ale_sign_column_always = 1
 
-Plug 'ambv/black', {'for': 'python'}
+" -- Python
 let g:black_virtualenv = '/home/alex/.virtualenvs/black'
+Plug 'ambv/black', {'for': 'python'}
 
 call plug#end()
 
@@ -54,9 +73,6 @@ set colorcolumn=+1
 set listchars=tab:».,trail:·,extends:→,precedes:←
 
 "  colorscheme nord:  Nord colorscheme. (requires arcticicestudio/nord-vim)
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-let g:nord_uniform_status_lines = 1
 colorscheme nord
 
 highlight StatusLine term=italic cterm=italic gui=italic
@@ -111,10 +127,6 @@ nnoremap <leader>t  :tabs<cr>
 " <esc>: Escape behaves as expected in terminal windows
 tnoremap <esc> <c-\><c-n>
 
-" -- Commands
-" <c-n>: Forward in command history
-" <c-p>: Previous in command history
-
 " -- Centered Movement
 " All of these commands tweak the 'jumping about' commands so that they
 " automatically place the cursor in the center of the screen.
@@ -140,6 +152,18 @@ set inccommand=split
 nnoremap <leader>#  :g/<c-r>//#<cr>
 nnoremap <leader>/  :silent! lvimgrep /<c-r>//j %<cr>:lwindow<cr>
 
+" -- Git
+" <leader>g:  Open git status (requires vim-fugitive)
+" <leader>s:  Stage the hunk under the cursor (requires vim-gitgutter)
+" <leader>r:  Reset the hunk under the cursor (requires vim-gitgutter)
+nnoremap <leader>g  :Gstatus<cr>
+nnoremap <leader>s  :GitGutterStageHunk<cr>
+nnoremap <leader>r  :GitGutterUndoHunk<cr>
+
+" ]h:  Jump to the next hunk in the file
+" [h:  Jump to the previous hunk in the file
+nnoremap ]h  :GitGutterNextHunk<cr>
+nnoremap [h  :GitGutterPrevHunk<cr>
 " ---------------------------------- Auto Commands ---------------------------
 "
 " In order of appearance
