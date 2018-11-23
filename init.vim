@@ -38,6 +38,7 @@ set formatoptions="qrcoa"
 "
 " list:        Display non-printaable chars according to `listchars`
 " title:       Set the window title to the file being edited
+" nowrap:      Don't wrap long lines
 " noshowmode:  Don't show the mode name at the bottom.
 " laststatus:  When is the statusline shown?
 " showtabline: When is the tabline shown?
@@ -45,6 +46,7 @@ set formatoptions="qrcoa"
 " listchars:   See :h listchars
 set list
 set title
+set nowrap
 set noshowmode
 set laststatus=0
 set showtabline=0
