@@ -9,6 +9,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'arcticicestudio/nord-vim'
 Plug 'machakann/vim-sandwich'
 
+Plug 'w0rp/ale'
+let g:ale_sign_column_always = 1
 call plug#end()
 
 
