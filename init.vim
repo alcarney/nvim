@@ -4,7 +4,7 @@
 
 " ---------------------------------- Plugins ---------------------------------
 "
-call plug#begin('~/AppData/Local/nvim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'arcticicestudio/nord-vim'
 Plug 'machakann/vim-sandwich'
