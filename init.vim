@@ -6,8 +6,24 @@
 "
 call plug#begin('~/AppData/Local/nvim/plugged')
 
+" Looks
 Plug 'arcticicestudio/nord-vim'
+
+" Editing
 Plug 'machakann/vim-sandwich'
+
+" Git
+let g:gitgutter_sign_added = '→'
+let g:gitgutter_sign_modified = '↔'
+let g:gitgutter_sign_removed = '←'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'tpope/vim-fugitive'
+
+
+" Linting
+Plug 'w0rp/ale', {'for': 'python'}
+let g:ale_sign_column_always = 1
 
 call plug#end()
 
@@ -56,6 +72,15 @@ highlight StatusLineNC term=italic cterm=italic gui=italic
 highlight Visual term=italic cterm=italic ctermbg=0
 highlight ColorColumn ctermbg=0
 
+"" --------------------------------- UX --------------------------------------
+"
+" wildmode:    Set the behavior of command line completion. See :h wildmode
+" wildignore:  Which files to exclude from the wildmenu
+set wildmode=longest:full
+set wildignore=*.swp,.git
+set wildignore+=*.pyc,__pycache__
+
+
 " ---------------------------------- Key Maps --------------------------------
 "
 " mapleader:      Prefix key to use for <leader> mappings
@@ -88,12 +113,12 @@ nnoremap <leader>b     :filter! /\[/ ls<cr>:b<space>
 " <c-h>:      Move to window left
 set splitbelow
 set splitright
-nnoremap <leader>p <c-w>p
+nnoremap <leader>p   <c-w>p
 
-nnoremap <c-l>     <c-w><c-l>
-nnoremap <c-k>     <c-w><c-k>
-nnoremap <c-j>     <c-w><c-j>
-nnoremap <c-h>     <c-w><c-h>
+nnoremap <c-l>       <c-w><c-l>
+nnoremap <c-k>       <c-w><c-k>
+nnoremap <c-j>       <c-w><c-j>
+nnoremap <c-h>       <c-w><c-h>
 
 " -- Tab Management
 " <leader>t: List tabs
@@ -129,8 +154,13 @@ set incsearch
 set nohlsearch
 set inccommand=split
 
+" <leader>#:  Show lines that match the previous pattern in a temporary window
+" <leader>/:  List all lines that match the previous pattern in a location list
 nnoremap <leader>#  :g/<c-r>//#<cr>
 nnoremap <leader>/  :silent! lvimgrep /<c-r>//j %<cr>:lwindow<cr>
+
+" -- Git (requires tpope/vim-fugitive)
+nnoremap <leader>g  :Gstatus<cr>
 
 " ---------------------------------- Auto Commands ---------------------------
 "
@@ -140,3 +170,17 @@ augroup general
     autocmd!
     autocmd BufWritePre * %s/\s\+$//e
 augroup END
+
+" ---------------------------------- Python Provider -------------------------
+let g:python3_host_prog = 'C:\Users\acarney\Documents\PythonEnvs\neovim\Scripts\python.exe'
+
+" ---------------------------------- Functions -------------------------------
+function! MkLayout()
+    90vsp
+    wincmd h
+    20sp
+    terminal
+    wincmd k
+endfunction
+
+nnoremap <leader>l :call MkLayout()<cr>

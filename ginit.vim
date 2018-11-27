@@ -1,1 +1,1 @@
-GuiFont Fira Code:h10
+GuiFont Consolas:h10
