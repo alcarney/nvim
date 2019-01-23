@@ -22,6 +22,12 @@ Plug 'tpope/vim-fugitive'
 
 
 " Linting
+Plug 'ambv/black', {'for': 'python'}
+let g:black_virtualenv = 'C:\Users\acarney\Documents\PythonEnvs\black'
+
+Plug 'fisadev/vim-isort', {'for': 'python'}
+let g:vim_isort_python_version = 'python3'
+
 Plug 'w0rp/ale', {'for': 'python'}
 let g:ale_sign_column_always = 1
 
@@ -43,6 +49,7 @@ set softtabstop=4
 "
 set textwidth=79
 set formatoptions="qrcoa"
+set nowrap
 
 " ---------------------------------- Appearance ------------------------------
 "
@@ -92,6 +99,7 @@ let maplocalleader = ' '
 " path:      Search downwards from the working directory
 " <leader>f: Find file
 set path=**
+nnoremap <leader>e  :e %:h/
 nnoremap <leader>f  :find<space>
 
 " -- Buffer Management
@@ -127,10 +135,6 @@ nnoremap <leader>t  :tabs<cr>
 " -- Terminal
 " <esc>: Escape behaves as expected in terminal windows
 tnoremap <esc> <c-\><c-n>
-
-" -- Commands
-" <c-n>: Forward in command history
-" <c-p>: Previous in command history
 
 " -- Centered Movement
 " All of these commands tweak the 'jumping about' commands so that they
@@ -172,15 +176,7 @@ augroup general
 augroup END
 
 " ---------------------------------- Python Provider -------------------------
+let g:python_host_prog = 'C:\Users\acarney\Documents\PythonEnvs\neovim2\Scripts\python.exe'
 let g:python3_host_prog = 'C:\Users\acarney\Documents\PythonEnvs\neovim\Scripts\python.exe'
 
 " ---------------------------------- Functions -------------------------------
-function! MkLayout()
-    90vsp
-    wincmd h
-    20sp
-    terminal
-    wincmd k
-endfunction
-
-nnoremap <leader>l :call MkLayout()<cr>
