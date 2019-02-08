@@ -7,10 +7,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Colors
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-let g:nord_uniform_status_lines = 1
-Plug 'arcticicestudio/nord-vim'
+Plug 'dylanaraps/wal.vim'
 
 " Generic Editing
 Plug 'machakann/vim-sandwich'
@@ -72,8 +69,7 @@ set showtabline=0
 set colorcolumn=+1
 set listchars=tab:».,trail:·,extends:→,precedes:←
 
-"  colorscheme nord:  Nord colorscheme. (requires arcticicestudio/nord-vim)
-colorscheme nord
+colorscheme wal
 
 highlight StatusLine term=italic cterm=italic gui=italic
 highlight StatusLineNC term=italic cterm=italic gui=italic
