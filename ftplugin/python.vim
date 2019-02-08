@@ -6,5 +6,6 @@ setlocal textwidth=88
 
 augroup python
     autocmd!
+    autocmd BufWritePre *.py execute ':Isort'
     autocmd BufWritePre *.py execute ':Black'
 augroup END

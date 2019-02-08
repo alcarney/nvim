@@ -6,8 +6,9 @@
 "
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Colors
+" Colors & Looks
 Plug 'dylanaraps/wal.vim'
+Plug 'itchyny/lightline.vim'
 
 " Generic Editing
 Plug 'machakann/vim-sandwich'
@@ -30,6 +31,10 @@ let g:ale_sign_column_always = 1
 " -- Python
 let g:black_virtualenv = '/home/alex/.virtualenvs/black'
 Plug 'ambv/black', {'for': 'python'}
+
+let g:vim_isort_map = ''
+let g:vim_isort_python_version = 'python3'
+Plug 'fisadev/vim-isort', {'for': 'python'}
 
 call plug#end()
 
@@ -64,7 +69,7 @@ set list
 set title
 set nowrap
 set noshowmode
-set laststatus=0
+set laststatus=2
 set showtabline=0
 set colorcolumn=+1
 set listchars=tab:».,trail:·,extends:→,precedes:←
